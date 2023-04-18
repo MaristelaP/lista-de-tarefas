@@ -14,18 +14,23 @@ public class TarefaController {
     @Autowired
     private TarefaService tarefaService;
 
-    @GetMapping
-    public List<Tarefa> get(){
-
-        return tarefaService.buscarTarefas();
-    }
 
     @PostMapping
     public Tarefa post(@RequestBody Tarefa tarefa) {
         return tarefaService.salvarTarefas(tarefa);
     }
 
-    @DeleteMapping("/id")
+    @GetMapping
+    public List<Tarefa> get(){
+        return tarefaService.buscarTarefas();
+    }
+
+    @PutMapping("/{id}")
+    public Tarefa put(@PathVariable Long id, @RequestBody Tarefa tarefa ) {
+        return this.tarefaService.atualizarTarefa(id, tarefa);
+    }
+
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
 
         this.tarefaService.apagarPorId(id);

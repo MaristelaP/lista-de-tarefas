@@ -15,7 +15,7 @@ public class Tarefa {
     private String nome;
 
     @Column(nullable = false)
-    private String data;
+    private String dia;
 
     @Column(nullable = false)
     private String hora;
